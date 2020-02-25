@@ -27,6 +27,8 @@ RUN pacman -Syu --noconfirm \
     libwebp \
     libxml2 \
     libxslt \
+    linux \
+    linux-firmware \
     linux-headers \
     musl \
     neofetch \
@@ -48,6 +50,11 @@ RUN pacman -Syu --noconfirm \
     jpeg-archive \
     zip
 
+
+#
+# Create sym-link for chromium
+#
+RUN ln -s /usr/bin/chromium /usr/bin/chromium-browser
 
 RUN python3 -m ensurepip \
     && pip3 install --upgrade pip setuptools \
