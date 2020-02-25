@@ -122,11 +122,11 @@ async def pipcheck(pip):
 @register(outgoing=True, pattern="^.alive$")
 async def amireallyalive(alive):
     """ For .alive command, check if the bot is running.  """
-    await alive.edit("`Telegram User Bot Running` \n"
-f"{version.__version__} " 
-f"|| {python_version()} \n" 
-f"|| {DEFAULTUSER}"
-)    
+    await alive.edit("`TELEGRAM USERBOT RUNNING` \n"
+                               f"`_________________________________`\n"
+                               f"{version.__version__} " 
+                               f"|| {python_version()} " 
+                               f"|| {DEFAULTUSER}")    
 
 
 
