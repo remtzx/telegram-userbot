@@ -1,61 +1,53 @@
-# We're using Alpine Edge
-FROM alpine:edge
+# We're using Arch Linux
+FROM archlinux:latest
 
 #
-# We have to uncomment Community repo for some packages
+# Updating Arch
 #
-RUN sed -e 's;^#http\(.*\)/edge/community;http\1/edge/community;g' -i /etc/apk/repositories
+RUN pacman -Syu --noconfirm
 
 #
 # Installing Packages
 #
-RUN apk add --no-cache=true --update \
+RUN pacman -Syu --noconfirm \
     coreutils \
     bash \
-    build-base \
-    bzip2-dev \
+    base-devel \
+    bzip2 \
     curl \
     figlet \
     gcc \
-    g++ \
+    clang \
     git \
     sudo \
     aria2 \
     util-linux \
     libevent \
-    jpeg-dev \
-    libffi-dev \
-    libpq \
-    libwebp-dev \
+    libffi \
+    libwebp \
     libxml2 \
-    libxml2-dev \
-    libxslt-dev \
+    libxslt \
     linux-headers \
     musl \
     neofetch \
-    openssl-dev \
     postgresql \
     postgresql-client \
-    postgresql-dev \
+    postgresql-libs \
     openssl \
     pv \
     jq \
     wget \
     python \
-    python-dev \
-    python3 \
-    python3-dev \
-    readline-dev \
+    readline \
     sqlite \
     ffmpeg \
-    sqlite-dev \
+    sqlite \
     sudo \
     chromium \
-    chromium-chromedriver \
-    zlib-dev \
-    jpeg \
+    zlib \
+    jpeg-archive \
     zip
-    
+
 
 RUN python3 -m ensurepip \
     && pip3 install --upgrade pip setuptools \
