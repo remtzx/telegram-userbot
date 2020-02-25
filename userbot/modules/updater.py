@@ -101,7 +101,7 @@ async def upstream(ups):
 
     if not changelog and not force_update:
         await ups.edit(
-            f'\n`Your BOT is`  **up-to-date**  `with`  **{ac_br}**\n')
+            f'\n`No Updates,` BOT **up-to-date**  `with`  **{ac_br}**\n')
         repo.__del__()
         return
 
@@ -127,7 +127,7 @@ async def upstream(ups):
         await ups.edit(
             '`Force-Syncing to latest stable userbot code, please wait...`')
     else:
-        await ups.edit('`Updating One4uBot, please wait....`')
+        await ups.edit('`Updating telegram-userbot, please wait....`')
     # We're in a Heroku Dyno, handle it's memez.
     if HEROKU_APIKEY is not None:
         import heroku3
@@ -183,7 +183,7 @@ async def upstream(ups):
         if BOTLOG:
             await ups.client.send_message(
                 BOTLOG_CHATID, "#UPDATE \n"
-                "Your One4uBot was successfully updated")
+                "Your telegram-userbot was successfully updated")
 
         # Spin a new instance of bot
         args = [sys.executable, "-m", "userbot"]
