@@ -19,7 +19,7 @@ from telethon.tl.types import InputStickerSetID
 from telethon.tl.types import DocumentAttributeSticker
 
 KANGING_STR = [
-    "1add stickers in pack...",
+    "add stickers in pack...",
 ]
 
 
