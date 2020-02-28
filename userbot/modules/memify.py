@@ -111,7 +111,7 @@ async def mim(event):
                 event.chat_id,
                 requires_file_name,
                 supports_streaming=False,
-                caption="Memifyed",
+                caption="meme_text",
             )
             await event.delete()
             #await bot.send_message(event.chat_id, "`☠️☠️Ah Shit... Here we go Again!🔥🔥`")
