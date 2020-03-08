@@ -259,6 +259,32 @@ UWUS = [
     "((+_+))",
 ]
 
+IWIS = [
+    "┐(´д｀)┌",
+    "┐(´～｀)┌",
+    "┐(´ー｀)┌",
+    "┐(￣ヘ￣)┌",
+    "╮(╯∀╰)╭",
+    "╮(╯_╰)╭",
+    "┐(´д`)┌",
+    "┐(´∀｀)┌",
+    "ʅ(́◡◝)ʃ",
+    "┐(ﾟ～ﾟ)┌",
+    "┐('д')┌",
+    "┐(‘～`;)┌",
+    "ヘ(´－｀;)ヘ",
+    "┐( -“-)┌",
+    "ʅ（´◔౪◔）ʃ",
+    "ヽ(゜～゜o)ノ",
+    "ヽ(~～~ )ノ",
+    "┐(~ー~;)┌",
+    "┐(-。ー;)┌",
+    r"¯\_(ツ)_/¯",
+    r"¯\_(⊙_ʖ⊙)_/¯",
+    r"¯\_༼ ಥ ‿ ಥ ༽_/¯",
+    "乁( ⁰͡  Ĺ̯ ⁰͡ ) ㄏ",
+]
+
 FACEREACTS = [
     "ʘ‿ʘ",
     "ヾ(-_- )ゞ",
@@ -605,6 +631,23 @@ HIT = [
 
 WHERE = ["in the chest", "on the head", "on the butt", "on the crotch"]
 
+GAMBAR_TITIT = """
+🍆🍆
+🍆🍆🍆
+  🍆🍆🍆
+    🍆🍆🍆
+     🍆🍆🍆
+       🍆🍆🍆
+        🍆🍆🍆
+         🍆🍆🍆
+          🍆🍆🍆
+          🍆🍆🍆
+      🍆🍆🍆🍆
+ 🍆🍆🍆🍆🍆🍆
+ 🍆🍆🍆  🍆🍆🍆
+    🍆🍆       🍆🍆
+"""
+
 # ===========================================
 
 
@@ -743,7 +786,7 @@ async def facepalm(e):
 
 @register(outgoing=True, pattern="^.cry$")
 async def cry(e):
-    """ nangis aja """
+    """ y u du dis, i cry everytime !! """
     await e.edit(choice(CRI))
 
 
@@ -906,6 +949,26 @@ async def react_meme(react):
     await react.edit(choice(FACEREACTS))
 
 
+@register(outgoing=True, pattern="^.iwi(?: |$)(.*)")
+async def faces(siwis):
+    """ IwI """
+    textx = await siwis.get_reply_message()
+    message = siwis.pattern_match.group(1)
+    if message:
+        pass
+    elif textx:
+        message = textx.text
+    else:
+        await siwis.edit("` IwI no text given! `")
+        return
+
+    reply_text = sub(r"(a|i|u|e|o)", "i", message)
+    reply_text = sub(r"(A|I|U|E|O)", "I", reply_text)
+    reply_text = sub(r"\!+", " " + choice(IWIS), reply_text)
+    reply_text += " " + choice(IWIS)
+    await siwis.edit(reply_text)
+
+
 @register(outgoing=True, pattern="^.shg$")
 async def shrugger(shg):
     r""" ¯\_(ツ)_/¯ """
@@ -942,11 +1005,16 @@ async def Oof(e):
 async def iqless(e):
     await e.edit("♿")
 
-
+                      
 @register(outgoing=True, pattern="^.fuck$")
 async def iqless(e):
-    await e.edit("🖕🖕🖕🖕🖕🖕🖕🖕\n🖕🖕🖕🖕🖕🖕🖕🖕\n🖕🖕\n🖕🖕\n🖕🖕\n🖕🖕🖕🖕🖕🖕\n🖕🖕🖕🖕🖕🖕\n🖕🖕\n🖕🖕\n🖕🖕\n🖕🖕\n🖕🖕")
+    await e.edit("🖕🖕🖕🖕🖕🖕🖕🖕\n🖕🖕🖕🖕🖕🖕🖕🖕\n🖕🖕\n🖕🖕\n🖕🖕\n🖕🖕🖕🖕🖕🖕\n🖕🖕🖕🖕🖕🖕\n🖕🖕\n🖕🖕\n🖕🖕\n🖕🖕\n🖕🖕")  
 
+                     
+@register(outgoing=True, pattern="^.bye$")
+async def iqless(e):
+    await e.edit("Kek thx bye")       
+                      
 
 @register(outgoing=True, pattern="^.moon$")
 async def moon(event):
@@ -1211,12 +1279,12 @@ async def gtfo(e):
 async def nih(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("`\n(\_/)`"
-                     "`\n(●_●)`"
-                     "`\n />🌹 *ini buat kamu`"
+                     "`\n(•_•)`"
+                     "`\n >🌹 *ini buat kamu`"
                      "`\n                    `"
                      "`\n(\_/)`"
-                     "`\n(●_●)`"
-                     "`\n🌹<\  *tapi boong`")
+                     "`\n(•_•)`"
+                     "`\n🌹<\ *tapi boong`")
 
 
 @register(outgoing=True, pattern="^.fag$")  
@@ -1290,9 +1358,18 @@ async def nou(e):
         await e.edit("`\n┈╭╮╭╮\n┈┃┃┃┃\n╭┻┗┻┗╮`"
                      "`\n┃┈▋┈▋┃\n┃┈╭▋━╮━╮\n┃┈┈╭╰╯╰╯╮`"
                      "`\n┫┈┈  NoU\n┃┈╰╰━━━━╯`"
-"`\n┗━━┻━┛`")                   
+                     "`\n┗━━┻━┛`")
 
-                                                                                    
+
+@register(outgoing=True, pattern=r"^\.(?:penis|dick)\s?(.)?")
+async def emoji_penis(e):
+    emoji = e.pattern_match.group(1)
+    titid = GAMBAR_TITIT
+    if emoji:
+        titid = titid.replace('🍆', emoji)
+    await e.edit(titid)  
+              
+ 
 CMD_HELP.update({
     "memes":
     ".cowsay\
@@ -1351,6 +1428,8 @@ CMD_HELP.update({
 \nUsage: Believe me, you will find this useful.\
 \n\n.type\
 \nUsage: Just a small command to make your keyboard become a typewriter!\
+\n\n.penis <emoji> | .dick <emoji>\
+\nUsage: Creates a penis using the provided emoji, or 🍆 if no emoji is provided.\
 \n\n.lfy <query>\
 \nUsage: Let me Google that for you real quick !!\
 \n\n.decide [Alternates: (.yes, .no, .maybe)]\
@@ -1361,6 +1440,6 @@ CMD_HELP.update({
 \n\nAnd many more\
 \n.nou ; .bot ; .gey ; .gey ; .tf ; .paw ; .taco ; .nih ;\
 \n.fag ; .gtfo ; .stfu ; .lol ; .lool ; .fail ; .leave\
-\n.love ; .rain ; .earth ; .fuck\
+\n.love ; .rain ; .earth ; .fuck ; .iwi\
 \n\n\nThanks to 🅱️ottom🅱️ext🅱️ot (@NotAMemeBot) for some of these."
 })
