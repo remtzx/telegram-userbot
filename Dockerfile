@@ -34,7 +34,7 @@ RUN pacman -Syu --noconfirm \
     neofetch \
     postgresql \
     postgresql-client \
-    postgresql-dev \
+    postgresql \
     openssl \
     pv \
     jq \
