@@ -1,59 +1,63 @@
-# We're using Arch Linux
-FROM archlinux:latest
+# We're using Alpine Edge
+FROM alpine:edge
 
 #
-# Update Arch Linux
+# We have to uncomment Community repo for some packages
 #
-RUN pacman -Syu --noconfirm
+RUN sed -e 's;^#http\(.*\)/edge/community;http\1/edge/community;g' -i /etc/apk/repositories
+RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories
 
 #
 # Installing Packages
 #
-RUN pacman -Syu --noconfirm \
+RUN apk add --no-cache=true --update \
     coreutils \
     bash \
-    base-devel \
-    bzip2 \
+    build-base \
+    bzip2-dev \
     curl \
     figlet \
     gcc \
-    clang \
+    g++ \
     git \
     sudo \
     aria2 \
     util-linux \
     libevent \
-    libffi \ 
-    libwebp \
+    jpeg-dev \
+    libffi-dev \
+    libpq \
+    libwebp-dev \
     libxml2 \
-    libxslt \
-    linux \
-    linux-firmware \
+    libxml2-dev \
+    libxslt-dev \
     linux-headers \
     musl \
     neofetch \
+    openssl-dev \
     postgresql \
     postgresql-client \
-    postgresql \
+    postgresql-dev \
     openssl \
     pv \
     jq \
     wget \
     python \
-    readline \
+    python-dev \
+    python3 \
+    python3-dev \
+    readline-dev \
     sqlite \
     ffmpeg \
-    sqlite \
+    sqlite-dev \
     sudo \
     chromium \
-    zlib \
-    jpeg-archive \
-    zip
-    
-#
-# Create sym-link for chromium
-#
-RUN ln -s /usr/bin/chromium /usr/bin/chromium-browser
+    chromium-chromedriver \
+    zlib-dev \
+    jpeg \
+    zip \
+    megatools
+
 
 RUN python3 -m ensurepip \
     && pip3 install --upgrade pip setuptools \
@@ -65,7 +69,7 @@ RUN python3 -m ensurepip \
 #
 # Clone repo and prepare working directory
 #
-RUN git clone -b stable https://github.com/afdulfauzan/telegram-userbot /root/userbot
+RUN git clone -b master https://github.com/afdulfauzan/telegram-userbot /root/userbot
 RUN mkdir /root/userbot/bin/
 WORKDIR /root/userbot/
 
@@ -79,3 +83,4 @@ COPY ./sample_config.env ./userbot.session* ./config.env* /root/userbot/
 #
 RUN pip3 install -r requirements.txt
 CMD ["python3","-m","userbot"]
+
